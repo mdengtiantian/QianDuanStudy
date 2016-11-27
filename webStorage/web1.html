@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box">
+    <p id="p"></p> <!-- 用来存数据-->
+    <input type="text" id="input"/>
+    <input type="button" value="保存数据" onclick="saveStorage('input')"/>
+    <input type="button" value="保存数据" onclick="loadStorage('p')"/>
+
+</div>
+</body>
+</html>
+<script>
+    /* sessionStorage 数据保存在sessioin对象中，保存用户浏览网站这段时间的任何数据*/
+    function saveStorage(id) {
+        var target = document.getElementById(id);
+        var str = target.value;
+//        保存数据
+        sessionStorage.setItem("message", str);
+    }
+    function loadStorage(id) {
+        var target = document.getElementById(id);
+//        读取数据
+        var msg = sessionStorage.getItem("message");
+        target.innerHTML = msg;
+    }
+
+    /* localStorage 保存在客户端硬件设备上，浏览器关闭了依然可以使用，一般用来保存用户名和密码*/
+//    function saveStorage(id) {
+//        var target = document.getElementById(id);
+//        var str = target.value;
+//        localStorage.setItem("message", str);
+//    }
+//    function loadStorage(id) {
+//        var target = document.getElementById(id);
+//        var msg = localStorage.getItem("message");
+//        target.innerHTML = msg;
+//    }
+
+</script>

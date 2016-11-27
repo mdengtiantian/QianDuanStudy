@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.news{
+    width: 1200px;
+    height: 800px;
+    border: 1px solid #cccccc;
+    margin: 20px auto;
+    overflow: hidden;
+}
+.left{
+    width: 500px;
+    height: 100%;
+    float: left;
+    background-color: #33ae9a;
+}
+
+.right{
+    width: 660px;
+    height: 100%;
+    float: right;
+    background-color: #ac81ae;
+    padding: 20px;
+ }
+.right h2{
+    text-align: center;
+}
+.right p{
+    color: #e8e337;
+    font-size: 16px;
+}
+#btn{
+    width: 80px;
+    height: 40px;
+    background: #6c75e8;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+}

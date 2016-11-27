@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .content {
+            width: 400px;
+            border: 1px solid #ccc;
+            margin: 10px auto;
+            position: relative;
+            padding: 5px;
+        }
+
+        .item {
+            width: 390px;
+            height: 70px;
+            position: relative;
+            margin: 5px auto;
+            cursor: pointer;
+        }
+
+        .item:hover {
+            background-color: #cccccc;
+        }
+
+        .img {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+
+        .title {
+            width: 325px;
+            height: 20px;
+            position: absolute;
+            top: 5px;
+            left: 70px;
+            overflow: hidden;
+        }
+
+        .dec {
+            width: 80px;
+            height: 20px;
+            position: absolute;
+            top: 40px;
+            left: 70px;
+        }
+
+        .time {
+            width: 220px;
+            height: 20px;
+            position: absolute;
+            top: 40px;
+            left: 175px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="content">
+    <ul class="list" id="list">
+        <!--<li class="item">-->
+        <!--<img class="img" src="http://photocdn.sohu.com/20161120/Img473640827_ss.jpeg" alt=""/>-->
+        <!--<h3 class="title">标题</h3>-->
+        <!--<span class="dec">网易新闻</span>-->
+        <!--<span class="time">2016-11-20 08:55</span>-->
+        <!--</li>-->
+    </ul>
+</div>
+</body>
+</html>
+<script>
+    window.onload = function () {
+        /*从服务器获取json数据，(JS内建eavl()函数自动自动把json转换为JS对象 ) 保存到新数组里*/
+        var data = getDataFromServer();
+        var newArray = data.result;
+        /*根据数组长度动态创建li，并添加到list里*/
+        var list = document.getElementById("list");
+        for (var i = 0; i < newArray.length; i++) {
+            var li = createItem(newArray[i]);
+            list.appendChild(li);
+        }
+    };
+    /*模拟从服务器获取的数据*/
+    function getDataFromServer() {
+        return {
+            "result": [{
+                "ctime": "2016-11-19 22:22",
+                "title": "河北一化工公司发生疑似化学品中毒事故 致3人死亡",
+                "description": "搜狐国内",
+                "picUrl": "http://photocdn.sohu.com/20161119/Img473633103_ss.jpeg",
+                "url": "http://news.sohu.com/20161119/n473633100.shtml"
+            }, {
+                "ctime": "2016-11-19 20:01",
+                "title": "习近平抵达利马 出席APEC会议并访问秘鲁",
+                "description": "搜狐国内",
+                "picUrl": "",
+                "url": "http://news.sohu.com/20161119/n473626280.shtml"
+            }, {
+                "ctime": "2016-11-19 20:05",
+                "title": "西交大环境指数发布：区域间环境质量差异大",
+                "description": "搜狐国内",
+                "picUrl": "",
+                "url": "http://news.sohu.com/20161119/n473627189.shtml"
+            }, {
+                "ctime": "2016-11-19 20:11",
+                "title": "中国科学院大学将建深圳校区(图)",
+                "description": "搜狐国内",
+                "picUrl": "",
+                "url": "http://news.sohu.com/20161119/n473627194.shtml"
+            }, {
+                "ctime": "2016-11-19 20:31",
+                "title": "王健林呼吁解决空气污染：不然人才和公司都走了",
+                "description": "搜狐国内",
+                "picUrl": "http://photocdn.sohu.com/20161119/Img473623847_ss.jpeg",
+                "url": "http://news.sohu.com/20161119/n473627278.shtml"
+            }, {
+                "ctime": "2016-11-19 20:33",
+                "title": "安徽“巨贪村官”一审获刑20年 涉案金额超1.5亿",
+                "description": "搜狐国内",
+                "picUrl": "http://photocdn.sohu.com/20161119/Img473625667_ss.jpeg",
+                "url": "http://news.sohu.com/20161119/n473627318.shtml"
+            }, {
+                "ctime": "2016-11-19 20:58",
+                "title": "国平：让中厄友好合作新桥更坚实",
+                "description": "搜狐国内",
+                "picUrl": "http://photocdn.sohu.com/20161119/Img473625808_ss.jpeg",
+                "url": "http://news.sohu.com/20161119/n473628545.shtml"
+            }, {
+                "ctime": "2016-11-19 21:03",
+                "title": "专家：中拉合作进入整体合作与双边合作新阶段",
+                "description": "搜狐国内",
+                "picUrl": "http://photocdn.sohu.com/20161119/Img473627190_ss.jpg",
+                "url": "http://news.sohu.com/20161119/n473628688.shtml"
+            }, {
+                "ctime": "2016-11-19 21:35",
+                "title": "在秘鲁首都利马感受“中国风”",
+                "description": "搜狐国内",
+                "picUrl": "http://photocdn.sohu.com/20161119/Img473627196_ss.jpg",
+                "url": "http://news.sohu.com/20161119/n473630502.shtml"
+            }, {
+                "ctime": "2016-11-19 21:36",
+                "title": "随笔：中国力推全球包容性增长契合APEC愿景",
+                "description": "搜狐国内",
+                "picUrl": "http://photocdn.sohu.com/20161119/Img473630503_ss.jpg",
+                "url": "http://news.sohu.com/20161119/n473630521.shtml"
+            }, {
+                "ctime": "2016-11-19 18:42",
+                "title": "毛泽东外孙女婿因何被称为“行业佼佼者”？",
+                "description": "搜狐国内",
+                "picUrl": "",
+                "url": "http://news.sohu.com/20161119/n473622670.shtml"
+            }, {
+                "ctime": "2016-11-19 18:57",
+                "title": "国家主席习近平抵达利马 秘鲁各界充满期待",
+                "description": "搜狐国内",
+                "picUrl": "",
+                "url": "http://news.sohu.com/20161119/n473623309.shtml"
+            }, {
+                "ctime": "2016-11-19 19:00",
+                "title": "习主席拉美行漫评②：搭建中厄友好合作新桥",
+                "description": "搜狐国内",
+                "picUrl": "",
+                "url": "http://news.sohu.com/20161119/n473623554.shtml"
+            }, {
+                "ctime": "2016-11-19 19:04",
+                "title": "强力治理大气污染 石家庄要求全市药企停工",
+                "description": "搜狐国内",
+                "picUrl": "",
+                "url": "http://news.sohu.com/20161119/n473623750.shtml"
+            }, {
+                "ctime": "2016-11-19 19:07",
+                "title": "石家庄市政府为哪项“政治任务”道歉？",
+                "description": "搜狐国内",
+                "picUrl": "http://photocdn.sohu.com/20161119/Img473604821_ss.jpeg",
+                "url": "http://news.sohu.com/20161119/n473623846.shtml"
+            }, {
+                "ctime": "2016-11-19 19:44",
+                "title": "污染带回流 北京地区再陷重污染",
+                "description": "搜狐国内",
+                "picUrl": "http://photocdn.sohu.com/20161119/Img473622671_ss.jpeg",
+                "url": "http://news.sohu.com/20161119/n473625459.shtml"
+            }, {
+                "ctime": "2016-11-19 19:47",
+                "title": "几乎同时落马的两位“首虎” 又同时被判",
+                "description": "搜狐国内",
+                "picUrl": "http://photocdn.sohu.com/20161119/Img473623555_ss.gif",
+                "url": "http://news.sohu.com/20161119/n473625666.shtml"
+            }, {
+                "ctime": "2016-11-19 19:51",
+                "title": "阿里地委书记白玛旺堆成最年轻少数民族省级常委",
+                "description": "搜狐国内",
+                "picUrl": "http://photocdn.sohu.com/20161119/Img473623847_ss.jpeg",
+                "url": "http://news.sohu.com/20161119/n473625807.shtml"
+            }, {
+                "ctime": "2016-11-19 19:58",
+                "title": "习近平会见厄瓜多尔国民代表大会主席",
+                "description": "搜狐国内",
+                "picUrl": "http://photocdn.sohu.com/20161119/Img473625667_ss.jpeg",
+                "url": "http://news.sohu.com/20161119/n473626162.shtml"
+            }, {
+                "ctime": "2016-11-19 19:59",
+                "title": "习近平同厄瓜多尔总统出席中厄合作项目揭牌仪式",
+                "description": "搜狐国内",
+                "picUrl": "http://photocdn.sohu.com/20161119/Img473625808_ss.jpeg",
+                "url": "http://news.sohu.com/20161119/n473626229.shtml"
+            }], "error_code": 0, "reason": "Succes"
+        }
+    }
+    /*根据返回的数据创建li*/
+    function createItem(New) {
+        var li = createElementByName("li");
+        li.className = "item";
+
+        var img = createElementByName("img");
+        img.className = "img";
+        img.src = New.picUrl;
+        li.appendChild(img);
+
+        var title = createElementByName("h3");
+        title.className = "title";
+        title.innerHTML = New.title;
+        li.appendChild(title);
+        //描述
+        var desc = createElementByName("span");
+        desc.className = "dec";
+        desc.innerHTML = New.description;
+        li.appendChild(desc);
+        //时间
+        var time = createElementByName("span");
+        time.className = "time";
+        time.innerHTML = New.ctime;
+        li.appendChild(time);
+
+        li.onclick = function () {
+            window.location.target = "_blank";
+            window.location.href = New.url;
+        };
+        return li;
+    }
+
+    /**
+     * 创建节点
+     */
+    function createElementByName(name) {
+        return document.createElement(name);
+    }
+
+</script>

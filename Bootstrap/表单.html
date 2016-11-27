@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--<link rel="stylesheet" href="bootstrap.min.css"/>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="container">
+
+    <form role="form">
+        <div class="form-group">
+            <lable>用户名</lable>
+            <!--lable必须要有的-->
+            <input type="date" class="form-control" placeholder="hello"/>
+        </div>
+        <div class="form-group">
+            <lable>密码</lable>
+            <input type="password" class="form-control" placeholder="password"/>
+        </div>
+        <div class="form-group">
+            <lable>选择文件</lable>
+            <input type="file"/>
+
+            <p class="help-block">选择你需要的文件</p>
+        </div>
+    </form>
+    <!--内联样式form-inline-->
+    <form role="form" class="form-inline">
+        <div class="form-group">
+            <lable class="sr-only">email</lable>
+            <!--sr-only 隐藏lable-->
+            <input type="email" class="form-control" placeholder="Enter email"/>
+        </div>
+        <div class="form-group">
+            <lable class="sr-only">密码</lable>
+            <input type="password" class="form-control" placeholder="password"/>
+        </div>
+        <div class="form-group">
+            <lable class="sr-only">选择文件</lable>
+            <input type="file"/>
+
+            <p class="help-block">选择你需要的文件</p>
+        </div>
+    </form>
+    <!--水平form-horizontal-->
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <lable class="col-sm-2 control-label">Email</lable>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" placeholder="Enter email"/>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <lable class="col-sm-2 control-label">password</lable>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" placeholder="password"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <lable>
+                        <input type="checkbox"/>记住密码 <!--为什么没对齐？？？？？-->
+                    </lable>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-default">登录</button>
+            </div>
+        </div>
+    </form>
+    <form role="form">
+        <input type="text" class="form-control"/>
+        <textarea class="form-control" rows="5">Hello</textarea>
+
+
+        <!-- 复选框-->
+        <div class="checkbox">
+            <lable>
+                <input type="checkbox"/>听音乐
+            </lable>
+        </div>
+        <div class="checkbox">
+            <lable>
+                <input type="checkbox"/>敲代码
+            </lable>
+        </div>
+        <!-- 单选框 要给他们一个一样的名字-->
+        <div class="radio">
+            <lable>
+                <input name="optionsRadios" type="radio"/>男
+            </lable>
+        </div>
+        <div class="radio">
+            <lable>
+                <input name="optionsRadios" type="radio"/>女
+            </lable>
+        </div>
+
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+        <br/>
+        <select multiple class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+        <br/>
+        <!-- disabled 禁用-->
+        <input class="form-control" type="text" placeholder="Hello" disabled/><br/>
+
+
+    </form>
+</div>
+<!--全部禁用-->
+<fieldset disabled>
+    <form role="form">
+        <div class="form-group">
+            <lable>用户名</lable>
+            <!--lable必须要有的-->
+            <input type="date" class="form-control" placeholder="hello"/>
+        </div>
+        <div class="form-group">
+            <lable>密码</lable>
+            <input type="password" class="form-control" placeholder="password"/>
+        </div>
+        <div class="form-group">
+            <lable>选择文件</lable>
+            <input type="file"/>
+
+            <p class="help-block">选择你需要的文件</p>
+        </div>
+    </form>
+    <!--内联样式form-inline-->
+    <form role="form" class="form-inline">
+        <div class="form-group">
+            <lable class="sr-only">email</lable>
+            <!--sr-only 隐藏lable-->
+            <input type="email" class="form-control" placeholder="Enter email"/>
+        </div>
+        <div class="form-group">
+            <lable class="sr-only">密码</lable>
+            <input type="password" class="form-control" placeholder="password"/>
+        </div>
+        <div class="form-group">
+            <lable class="sr-only">选择文件</lable>
+            <input type="file"/>
+
+            <p class="help-block">选择你需要的文件</p>
+        </div>
+    </form>
+    <!--水平form-horizontal-->
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <lable class="col-sm-2 control-label">Email</lable>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" placeholder="Enter email"/>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <lable class="col-sm-2 control-label">password</lable>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" placeholder="password"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <lable>
+                        <input type="checkbox"/>记住密码
+                    </lable>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-default">登录</button>
+            </div>
+        </div>
+    </form>
+    <form role="form">
+        <input type="text" class="form-control"/>
+        <textarea class="form-control" rows="5">Hello</textarea>
+
+
+        <!-- 复选框-->
+        <div class="checkbox">
+            <lable>
+                <input type="checkbox"/>听音乐
+            </lable>
+        </div>
+        <div class="checkbox">
+            <lable>
+                <input type="checkbox"/>敲代码
+            </lable>
+        </div>
+        <!-- 单选框 要给他们一个一样的名字-->
+        <div class="radio">
+            <lable>
+                <input name="optionsRadios" type="radio"/>男
+            </lable>
+        </div>
+        <div class="radio">
+            <lable>
+                <input name="optionsRadios" type="radio"/>女
+            </lable>
+        </div>
+
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+        <br/>
+        <select multiple class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+        <br/>
+        <!-- disabled 禁用-->
+        <input class="form-control" type="text" placeholder="Hello" disabled/><br/>
+
+
+    </form>
+</fieldset>
+
+<br/>
+<hr/>
+<br/>
+<!--成功失败警告-->
+<form role="form">
+    <div class="form-group has-warning">
+        <lable>用户名</lable>
+        <input class="form-control" type="text" />
+    </div>
+    <div class="form-group has-success has-feedback">
+        <lable>用户名</lable>
+        <input class="form-control" type="text"/>
+        <span class="glyphicon glyphicon-ok form-control-feedback"></span>  <!--为什么✔不在框里面？？？？？-->
+    </div>
+    <div class="form-group has-error has-feedback">
+        <lable>用户名</lable>
+        <input type="text" class="form-control"/>
+        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+    </div>
+</form>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+</body>
+</html>

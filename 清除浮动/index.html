@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>清除浮动</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .list {
+            background-color: green;
+            zoom:1;/*兼容ie浏览器，属性是IE浏览器的专有属性，Firefox等其它浏览器不支持。它可以设置或检索对象的缩放比例。除此之外，它还有其他一些小作用，比如触发ie的hasLayout属性，清除浮动、清除margin的重叠等*/
+        }
+        /*使用伪类清除浮动*/
+        .list:after{
+            content:"";
+            clear: both;
+            display: table;/*此元素会作为块级表格来显示（类似 <table>），表格前后带有换行符*/
+        }
+
+        .list li {
+            line-height: 50px;
+            text-align: center;
+            height: 50px;
+            width: 50px;
+            float: left;
+            margin-left: 10px;
+            margin-top: 3px;
+            background-color: #cccccc;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <p>前一行</p>
+    <ul class="list">
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+    </ul>
+    <p>换一行换一行换一行换一行</p>
+    <p>buhuile</p>
+</div>
+</body>
+</html>

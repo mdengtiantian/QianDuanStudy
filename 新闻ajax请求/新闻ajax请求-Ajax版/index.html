@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .content {
+            width: 400px;
+            border: 1px solid #ccc;
+            margin: 10px auto;
+            position: relative;
+            padding: 5px;
+        }
+
+        .item {
+            width: 390px;
+            height: 70px;
+            position: relative;
+            margin: 5px auto;
+            cursor: pointer;
+        }
+
+        .item:hover {
+            background-color: #cccccc;
+        }
+
+        .img {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+
+        .title {
+            width: 325px;
+            height: 20px;
+            position: absolute;
+            top: 5px;
+            left: 70px;
+            overflow: hidden;
+        }
+
+        .dec {
+            width: 80px;
+            height: 20px;
+            position: absolute;
+            top: 40px;
+            left: 70px;
+        }
+
+        .time {
+            width: 220px;
+            height: 20px;
+            position: absolute;
+            top: 40px;
+            left: 175px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="content">
+    <ul class="list" id="list">
+        <!--<li class="item">-->
+        <!--<img class="img" src="http://photocdn.sohu.com/20161120/Img473640827_ss.jpeg" alt=""/>-->
+        <!--<h3 class="title">标题</h3>-->
+        <!--<span class="dec">网易新闻</span>-->
+        <!--<span class="time">2016-11-20 08:55</span>-->
+        <!--</li>-->
+    </ul>
+</div>
+</body>
+</html>
+<script>
+    window.onload = function () {
+        getDataFromServer("get","http://192.168.1.109/index.php",null,true);
+    };
+
+    function handleData(jsonData){
+//        document.write(jsonData);
+        var newArray = JSON.parse(jsonData).result;
+        /*根据数组长度动态创建li，并添加到list里*/
+        var list = document.getElementById("list");
+        for (var i = 0; i < newArray.length; i++) {
+            var li = createItem(newArray[i]);
+            list.appendChild(li);
+        }
+    }
+
+    function createItem(New) {
+        var li = createElementByName("li");
+        li.className = "item";
+
+        var img = createElementByName("img");
+        img.className = "img";
+        img.src = New.picUrl;
+        li.appendChild(img);
+
+        var title = createElementByName("h3");
+        title.className = "title";
+        title.innerHTML = New.title;
+        li.appendChild(title);
+        //描述
+        var desc = createElementByName("span");
+        desc.className = "dec";
+        desc.innerHTML = New.description;
+        li.appendChild(desc);
+        //时间
+        var time = createElementByName("span");
+        time.className = "time";
+        time.innerHTML = New.ctime;
+        li.appendChild(time);
+
+        li.onclick = function () {
+            window.location.target = "_blank";
+            window.location.href = New.url;
+        };
+        return li;
+    }
+    function createElementByName(name) {
+        return document.createElement(name);
+    }
+
+//   创建XHRHttpRequest对象
+    function createXHR() {
+        if (typeof XMLHttpRequest != "undefined") {
+            return new XMLHttpRequest();
+        } else if (typeof ActiveXObject != "undefined") {
+            if (typeof arguments.callee.activeXString != "string") {
+                var versions = ["MSXML2.XMLHttp.6.0", "MSXML2.XMLHttp.3.0", "MSXML2.XMLHttp"], i, len;
+                for (i = 0, len = versions.length; i < len; i++) {
+                    try {
+                        new ActiveXObject(versions[i]);
+                        arguments.callee.activeXString = versions[i];
+                        break;
+                    } catch (ex) {
+                        //跳过
+                    }
+                }
+            }
+            return new ActiveXObject(arguments.callee.activeXString);
+        } else {
+            throw new Error("No XHR object available.");
+        }
+    }
+    /**
+     *
+     * @param method get或者post
+     * @param url 请求的地址
+     * @param param get或者post的参数
+     * @param asy 是否是异步的
+     */
+
+    function getDataFromServer(method,url,param,asy) {
+        var xhr = createXHR();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                    handleData(xhr.responseText);
+                } else {
+                    alert("Request was unsuccessful: " + xhr.status);
+                }
+            }
+        };
+        xhr.open(method, url, asy);
+        xhr.send(param);
+    }
+
+
+</script>

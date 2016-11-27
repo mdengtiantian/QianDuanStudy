@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<h2>在 JavaScript 中创建 JSON 对象</h2>
+
+<p>
+    Name: <span id="jname"></span><br/>
+    Age: <span id="jage"></span><br/>
+    Address: <span id="jstreet"></span><br/>
+    Phone: <span id="jphone"></span><br/>
+</p>
+
+<p>测试JSON使用javascript语法</p>
+
+
+<script type="text/javascript">
+    var JSONObject = {
+        "name": "Bill Gates",
+        "street": "Fifth Avenue New York 666",
+        "age": 56,
+        "phone": "555 1234567"
+    };
+    document.getElementById("jname").innerHTML = JSONObject.name;
+    document.getElementById("jage").innerHTML = JSONObject.age;
+    document.getElementById("jstreet").innerHTML = JSONObject.street;
+    document.getElementById("jphone").innerHTML = JSONObject.phone;
+
+    /*测试JSON使用javascript语法*/
+    var jsonObj = {
+        "name":"朱志强",
+        "age":24
+    };
+    var javascriptObj = {
+        name:"朱志强",
+        age:24
+    };
+
+    jsonObj.name = "dengtiantian";
+    jsonObj.age = 25;
+
+</script>
+
+</body>
+</html>
+<script>
+    /**
+     *
+     一、什么是jSON?
+     1、JSON：JavaScript 对象表示法（JavaScript Object Notation）。
+     2、JSON 是存储和交换文本信息的语法。类似 XML。
+     3、JSON 比 XML 更小、更快，更易解析。
+     更为重要的是：
+     JSON 文本格式在语法上与创建 JavaScript 对象的代码相同。
+     由于这种相似性，无需解析器，JavaScript 程序能够使用内建的 eval() 函数，用 JSON 数据来生成原生的 JavaScript 对象。
+
+     二、JSON值：
+     1、数字
+     2、字符串
+     3、数组
+     4、对象
+     5、NULL
+     6、逻辑值(true或false)
+
+     三、
+     JSON对象:
+     {
+        "name":"zhizhiqiang",
+        "age":24,
+        ...
+     }
+
+     JSON数组:
+     [
+        {
+            "name":"dengtiantian",
+            "age":"24"
+        },
+        {
+
+        },
+        ...
+     ]
+
+    四、
+     JSON使用javascript语法
+
+     */
+</script>

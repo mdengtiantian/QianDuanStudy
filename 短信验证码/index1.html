@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>短信验证码</title>
+    <script src="../jquery-3.1.1.min.js"></script>
+    <script src="../MyJS.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .content {
+            width: 400px;
+            height: 200px;
+            margin: 100px auto;
+        }
+
+        .form {
+            width: 400px;
+            margin: 70px auto;
+            position: relative;
+        }
+
+        .tip-phone {
+            position: absolute;
+            left: 5px;
+            top: 85px;
+        }
+
+        .phone {
+            width: 175px;
+            position: absolute;
+            left: 135px;
+            top: 85px;
+        }
+
+        .btn {
+            position: absolute;
+            left: 315px;
+            top: 85px;
+        }
+
+        .tip-code {
+            position: absolute;
+            left: 5px;
+            top: 115px;
+        }
+
+        .code {
+            top: 115px;
+            position: absolute;
+            left: 135px;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <form class="form">
+        <span class="tip-phone">输入您的手机号码:</span>
+        <input class="phone" type="text" value="18210571306"/>
+        <input id="btn_getCode" class="btn" type="button" value="点击获取"/>
+        <span class="tip-code">输入手机验证码: </span>
+        <input class="code" type="text"/>
+    </form>
+</div>
+</body>
+</html>
+
+<script>
+    /*注意Jquery中的这个方法和window.onload的区别*/
+    $(document).ready(function () {
+        $("#btn_getCode").click(function () {
+//            alert("开始获取验证码");
+            var phone = $(".phone").val();
+            MyLog("获取的手机号码是：" + phone);
+
+            /**
+             * 短信请求的接口是:http://v1.avatardata.cn/Sms/Send?key=[您申请的APPKEY]&mobile=XXXXXX&templateId=XXXXXX&param=XXXXX
+             */
+            var url = "http://192.168.1.109/index.php";
+//            var url = "http://192.168.1.109/interface/ems.php";
+            var param = {
+                key: "98ac670095b2463a852fa8159230b2d2",
+                mobile: phone,
+                templateId: "046c6838be344aa7a9f09e9a808463ec",
+                param: "10086"
+            };
+            $.ajax({
+                type: "GET",
+                url: url,
+                data: param,
+                success: function (success) {
+                    document.write(success);
+                },
+                error: function (error) {
+                    document.write(error);
+                }
+            });
+        });
+    });
+</script>

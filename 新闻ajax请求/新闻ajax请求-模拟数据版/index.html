@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<script>
+    window.onload = function(){
+        /**
+         *从服务器获取json数据，(JS内建eavl()函数自动自动把json转换为JS对象 ) 保存到新数组里
+         */
+        var data = getDataFromServer();
+        var newArray = data.result;
+
+        var list = document.getElementById("list");
+        /**
+         *根据数组长度动态创建li，并添加到list里
+         */
+        for(var i=0;i<newArray.length;i++){
+            var li = createItem(newArray[i]);
+            list.appendChild(li);
+        }
+    };
+
+    /**
+     *  从服务器获取数据
+     */
+    function getDataFromServer(){
+        return {
+            "error_code": 0,
+            "reason": "Succes",
+            "result": [
+                {
+                    "ctime": "2016-11-20 08:43",
+                    "description": "搜狐国内",
+                    "picUrl": "http://photocdn.sohu.com/20161120/Img473640545_ss.jpeg",
+                    "title": "习近平会见俄罗斯总统普京",
+                    "url": "http://news.sohu.com/20161120/n473643029.shtml"
+                },
+                {
+                    "ctime": "2016-11-20 08:55",
+                    "description": "搜狐国内",
+                    "picUrl": "http://photocdn.sohu.com/20161120/Img473640827_ss.jpeg",
+                    "title": "寒潮来袭中东部大部地区将大幅降温 北京局部有暴雪",
+                    "url": "http://news.sohu.com/20161120/n473643476.shtml"
+                },
+                {
+                    "ctime": "2016-11-20 08:59",
+                    "description": "搜狐国内",
+                    "picUrl": "http://photocdn.sohu.com/20161120/Img473641167_ss.jpeg",
+                    "title": "习近平会见美国总统奥巴马",
+                    "url": "http://news.sohu.com/20161120/n473644004.shtml"
+                },
+                {
+                    "ctime": "2016-11-20 09:23",
+                    "description": "搜狐国内",
+                    "picUrl": "http://photocdn.sohu.com/20161120/Img473643477_ss.jpeg",
+                    "title": "深圳房价下跌预期增强 部分投资客减仓出货",
+                    "url": "http://news.sohu.com/20161120/n473644706.shtml"
+                },
+                {
+                    "ctime": "2016-11-20 09:45",
+                    "description": "搜狐国内",
+                    "picUrl": "http://photocdn.sohu.com/20161120/Img473645558_ss.jpeg",
+                    "title": "洪秀柱证实国民党主席提前改选：让继任者布局选战",
+                    "url": "http://news.sohu.com/20161120/n473645557.shtml"
+                },
+                {
+                    "ctime": "2016-11-20 06:02",
+                    "description": "搜狐国内",
+                    "picUrl": "",
+                    "title": "王石：猎头公司找过我 开出了不可抗拒的价格",
+                    "url": "http://news.sohu.com/20161120/n473640544.shtml"
+                },
+                {
+                    "ctime": "2016-11-20 06:05",
+                    "description": "搜狐国内",
+                    "picUrl": "",
+                    "title": "上海火锅店一氧化碳中毒实为35人 事发店已停业",
+                    "url": "http://news.sohu.com/20161120/n473640557.shtml"
+                },
+                {
+                    "ctime": "2016-11-20 06:25",
+                    "description": "搜狐国内",
+                    "picUrl": "http://photocdn.sohu.com/20161120/Img473640277_ss.png",
+                    "title": "英媒：老龄化加速让中国财政吃紧不堪重负",
+                    "url": "http://news.sohu.com/20161120/n473640826.shtml"
+                },
+                {
+                    "ctime": "2016-11-20 06:30",
+                    "description": "搜狐国内",
+                    "picUrl": "http://photocdn.sohu.com/20161120/Img473640292_ss.jpeg",
+                    "title": "贪官们见不得光的钱如何洗：买房炒股 钱生钱",
+                    "url": "http://news.sohu.com/20161120/n473641019.shtml"
+                },
+                {
+                    "ctime": "2016-11-20 06:41",
+                    "description": "搜狐国内",
+                    "picUrl": "http://photocdn.sohu.com/20161120/Img473640347_ss.jpeg",
+                    "title": "习近平刚到访的这个国家 为啥称中国人为“老乡”",
+                    "url": "http://news.sohu.com/20161120/n473641166.shtml"
+                }
+            ]
+        };
+    }
+
+    /**
+     * NewData:消息数据(服务器返回的)
+     */
+    var NewData = {
+        error_code:0,
+        reason:"",
+        result:[]
+    };
+
+    /**
+     * 消息的实体类
+     */
+//    var New = {
+//        ctime:"",
+//        description:"",
+//        picUrl:"",
+//        title:"",
+//        url:""
+//    };
+
+    /**
+     *
+     * @param New 一个类，每一条消息
+     */
+    function createItem(New){
+        var li = createElementByName('li');
+        li.className = "item";
+        //图片
+        var img = createElementByName("img");
+        img.className = "img";
+        img.src = New.picUrl;
+        li.appendChild(img);
+        //标题
+        var title = createElementByName("h3");
+        title.className = "title";
+        title.innerHTML = New.title;
+        li.appendChild(title);
+        //描述
+        var desc = createElementByName("span");
+        desc.className = "dec";
+        desc.innerHTML = New.description;
+        li.appendChild(desc);
+        //时间
+        var time = createElementByName("span");
+        time.className = "time";
+        time.innerHTML = New.ctime;
+        li.appendChild(time);
+
+        //添加点击事件
+        li.onclick = function(){
+            window.location.target = "_blank";
+            window.location.href = New.url;
+        };
+
+        return li;
+    }
+
+    /**
+     * 创建一个节点
+     * @param name 节点名(li,span...)
+     */
+    function createElementByName(name){
+        return document.createElement(name);
+    }
+</script>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .content{
+            width: 400px;
+            border: 1px solid #ccc;
+            margin: 10px auto;
+            position: relative;
+            padding: 5px;
+        }
+        .item{
+            width: 390px;
+            height: 70px;
+            position: relative;
+            margin: 5px auto;
+            cursor: pointer;
+        }
+        .item:hover{
+            background-color: #cccccc;
+        }
+        .img{
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+        .title{
+            width: 325px;
+            height: 20px;
+            position: absolute;
+            top: 5px;
+            left: 70px;
+            overflow: hidden;
+        }
+        .dec{
+            width: 80px;
+            height: 20px;
+            position: absolute;
+            top: 40px;
+            left: 70px;
+        }
+        .time{
+            width: 220px;
+            height: 20px;
+            position: absolute;
+            top: 40px;
+            left: 175px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="content">
+    <ul class="list" id="list">
+        <!--<li class="item">-->
+            <!--<img class="img" src="http://photocdn.sohu.com/20161120/Img473640827_ss.jpeg" alt=""/>-->
+            <!--<h3 class="title">标题</h3>-->
+            <!--<span class="dec">网易新闻</span>-->
+            <!--<span class="time">2016-11-20 08:55</span>-->
+        <!--</li>-->
+    </ul>
+</div>
+</body>
+</html>
